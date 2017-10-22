@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cmath>
-//matricola Andrea Storace 4186140
 using namespace std;
 int main()
 {
