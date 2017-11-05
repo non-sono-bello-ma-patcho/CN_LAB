@@ -28,8 +28,8 @@ void stamp_info(const double N[],const int& i,const double x[],const int& j,cons
 	cout<<"\n---------------------------------------------\n";
    	cout<<"for N="<<N[i]<<" and x="<<x[j]<<endl;
    	cout<<"approximation: "<<fn_result<<"\ncomputed value: "<<f_result<<endl;
-   	cout<<"relative error: "<<(f_result - fn_result)/f_result<<endl;
-   	cout<<"absolute error: "<<f_result - fn_result<<endl;
+   	cout<<"relative error: "<<(fn_result - f_result)/f_result<<endl;
+   	cout<<"absolute error: "<<fn_result - f_result<<endl;
    	cout<<"---------------------------------------------\n";
 }
 
