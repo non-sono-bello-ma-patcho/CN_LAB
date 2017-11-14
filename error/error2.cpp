@@ -12,30 +12,24 @@ double factorial(double n)
 }
 
 
-double expTaylorExpansion(const double& deg,const double& x)
-{
+double expTaylorExpansion(const double& deg,const double& x){
 	double result=0;
-	for(int i=0;i<=deg;i++)
-	{
-		result+=pow(x,i)/factorial(i);
-	}	
+	for(int i=0;i<=deg;i++)	result+=pow(x,i)/factorial(i);
 	return result;
 }
 
-void stamp_info(const double N[],const int& i,const double x[],const int& j,const double& fn_result,const double& f_result)
-{
+void stamp_info(const double N[],const int& i,const double x[],const int& j,const double& fn_result,const double& f_result){
 	
 	cout<<"\n---------------------------------------------\n";
    	cout<<"for N="<<N[i]<<" and x="<<x[j]<<endl;
    	cout<<"approximation: "<<fn_result<<"\ncomputed value: "<<f_result<<endl;
-   	cout<<"relative error: "<<(fn_result - f_result)/f_result<<endl;
-   	cout<<"absolute error: "<<fn_result - f_result<<endl;
+   	cout<<"relative error: "<<(double)abs(fn_result - f_result)/f_result<<endl;
+   	cout<<"absolute error: "<<(double)abs(fn_result - f_result)<<endl;
    	cout<<"---------------------------------------------\n";
 }
 
 
-int main()
-{
+int main(){
    	double x[4]={0.5,30,-0.5,-30};
    	double N[5]={3,10,50,100,150};
    	double f_result;
@@ -68,10 +62,8 @@ int main()
    			
    	*/
    	cout<<"\n\n\nSECOND ALG:\n";
-   	for(int j=2;j<4;j++)
-   	{
-   		for(int i=0; i<5; i++)
-   		{
+   	for(int j=2;j<4;j++){
+   		for(int i=0; i<5; i++){
    			f_result=exp(x[j]);
    			if(x[j]==-0.5)
    			{
