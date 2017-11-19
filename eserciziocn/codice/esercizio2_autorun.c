@@ -127,7 +127,7 @@ switch(soluzioni_sistema(matrice,vettore,&l_y,&l_x))
 {
     case SISTEMA_FINITE_SOL:
         printf("sistema finito soluzioni:\n");
-        for(unsigned int i=0;i<l_y;i++)
+        for(unsigned int i=0;i<l_x-1;i++)
         {printf("x%u=%f\n",i+1,vettore[i]);}
         break;
     case SISTEMA_INFINITE_SOL:
@@ -207,7 +207,7 @@ int calcolo_tipo_sistema(float** matrice,const unsigned int* l_y,const unsigned 
     else
     {
         if(n_pivot_completa==*l_x-1){return SISTEMA_FINITE_SOL;}/*una e unica soluzioni*/
-        if(n_pivot_completa<*l_x-1){return SISTEMA_INFINITE_SOL;}/*una e unica soluzioni*/
+        if(n_pivot_completa<*l_x-1){return SISTEMA_INFINITE_SOL;}/*infinite soluzioni*/
     }
     return -1;/*errore (non dovrebbe mai verificarsi però boh non si sà mai :P*/
 }

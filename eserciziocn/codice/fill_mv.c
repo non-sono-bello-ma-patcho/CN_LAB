@@ -7,7 +7,7 @@ int fill_vector(float* vettore,const unsigned int* lunghezza,const int dimension
 	FILE *fp;
 	if(!dimensione_nota)
 	{
-	    printf("Vuoi inserire via terminale(0) o via file (1)?\n");
+	    printf("Vuoi inserire i dati dele VETTORE via terminale(0) o via file (1)?\n");
 	    fflush(stdin);
 	    scanf("%d",&scelta);
 	    
@@ -57,7 +57,7 @@ int fill_matrix(float** matrix,const unsigned int* l_y,const unsigned int* l_x,c
 	FILE *fp;
 	if(!dimensione_nota)
 	{
-	    printf("Vuoi inserire via terminale(0) o via file (1)?\n");
+	    printf("Vuoi inserire i dati della MATRICE via terminale(0) o via file (1)?\n");
 	    fflush(stdin);
 	    scanf("%d",&scelta);
 	}

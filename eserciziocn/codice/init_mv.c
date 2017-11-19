@@ -6,10 +6,11 @@ float** init_matrix(unsigned int* dimensione_x,unsigned int* dimensione_y,const 
 	float** matrice;
 	if(!(dimensione_nota))
 	{
+	    printf("Acquisizione dati per inizializzazione matrice:\n");
 	    printf("Inserisci numero righe matrice\n");
 	    fflush(stdin);
 	    scanf("%u",&(*dimensione_y));
-	    printf("Inserisci numero colonne matrice\n");
+	    printf("Inserisci il numero incognite massimo\n");
 	    fflush(stdin);
 	    scanf("%u",&(*dimensione_x));
 	}
@@ -42,7 +43,7 @@ float* init_vector(unsigned int* dimensione_y,const int dimensione_nota)
 	float* vettore;
 	if(!(dimensione_nota))
 	{
-	    printf("Inserisci numero righe vettore\n");
+	    printf("Inserisci numero componenti del vettore\n");
 	    fflush(stdin);
 	    scanf("%u",&(*dimensione_y));
     }

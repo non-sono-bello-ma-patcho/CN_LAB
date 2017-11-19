@@ -4,7 +4,7 @@
 #include<sys/wait.h>  
 #include<unistd.h>
 #include<string.h>
-#define _DEBUG
+//#define _DEBUG
 const char *menu="*********************************************MENU'*********************************************\nQuale esercizio vuoi svolgere?\n\n>Premere 1 per l'esercizio uno\n\n>Premere 2 per l'esercizio 2\n\n>Premere 3 per l'esercizio 3\n\n>Premere 4 per inserimento dati libero\n\n>Premere 0 per uscire\n\n\n\n\n\ncomando>";
 const char *matricola="4380663";
 int main()
