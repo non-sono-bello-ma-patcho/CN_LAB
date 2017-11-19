@@ -4,7 +4,7 @@
 #include<stdlib.h>
 #include"gauss_moves.h"
 //#define DEBUG
-#define STAMPA_OPERAZIONI
+//#define STAMPA_OPERAZIONI
 
 #ifdef DEBUG
 void debug(float** matrix,const unsigned int* altezza,const unsigned int* larghezza);

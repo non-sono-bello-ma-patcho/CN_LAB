@@ -39,7 +39,7 @@ while(scelta!=0)
         {   
             case 0:break;
             case 1:
-                printf("to be implemented");
+                exit_state=execl(current_directory,"esercizio2_autorun.out",(char*)NULL);
                 break;
             case 2:
                 exit_state=execl(current_directory,"esercizio2_autorun.out",(char*)NULL);
