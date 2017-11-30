@@ -29,7 +29,6 @@ return;
 }
 
 
-
 int f_auto_creazione_dati_matrice(char* numero_matricola)
 {
     FILE *fp;

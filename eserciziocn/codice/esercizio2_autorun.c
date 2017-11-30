@@ -149,7 +149,6 @@ switch(soluzioni_sistema(matrice,vettore,&l_y,&l_x))
 free_routine(matrice,vettore,&l_x);
 return 0;
 }
-
 /*riutilizzo il vettore per salvare le soluzioni*/
 
 int soluzioni_sistema(float** matrice,float* vettore,const unsigned int* l_y,const unsigned int* l_x/*la dimensione del vettore==l_y)*/)
