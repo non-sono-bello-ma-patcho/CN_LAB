@@ -24,4 +24,3 @@ int main()
 	return 0;
 }
 
-/*perchè il risultato viene uguale in entrambi??*/
