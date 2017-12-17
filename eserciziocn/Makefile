@@ -1,12 +1,15 @@
 CC = gcc
 CC1 = g++
-CFLAGS = -Wall 
+CFLAGS = -Wall -o
+OFLAG = -Ilib -c ${CFLAGS}
+
 
 TRASH_DIR = trash
 BIN_DIR = bin
+O_DIR = objfiles
 CODICE_DIR = codice
 LIB_DIR = lib
-
+SL = $(O_DIR)/system_library.a
 ESERCIZIO1A = $(BIN_DIR)/esercizio1a.out
 ESERCIZIO1B = $(BIN_DIR)/esercizio1b.out
 ESERCIZIO1C = $(BIN_DIR)/esercizio1c.out
@@ -22,14 +25,34 @@ DEPENDENCY2 = $(CODICE_DIR)/esercizio2_autorun.c $(CODICE_DIR)/auto_creazione_da
 
 DEPENDENCY3 = $(CODICE_DIR)/main.c 
 
-all: $(EXEC)
 
+#creating static library:
+$(SL): $(O_DIR)/auto_creazione_dati_matrice.o $(O_DIR)/gauss_moves.o $(O_DIR)/init_mv.o $(O_DIR)/perturbatore_vettore.o $(O_DIR)/output_type.o $(O_DIR)/output_type.o $(O_DIR)/fill_mv.o | $(O_DIR)
+ar rcs $@ $(O_DIR)/*.o
 
-$(EXE_ESERCIZIO1): $(DEPENDENCY1) $(DEPENDENCY2) $(DEPENDENCY3); $(CC1) $(CFLAG)  $(CODICE_DIR)/es1a.cpp -o $(ESERCIZIO1A) ; $(CC1) $(CODICE_DIR)/es1b.cpp -o $(ESERCIZIO1B) ; $(CC1) $(CODICE_DIR)/es1c.cpp -o $(ESERCIZIO1C) 
-                                                                                                                                                                                                                         
-$(EXE_ESERCIZIO2): $(DEPENDENCY2) $(DEPENDENCY1) $(DEPENDENCY3) ; $(CC) $(CFLAGS) $(DEPENDENCY2) -o $(EXE_ESERCIZIO2)                    
+# creating object files:
+$(O_DIR)/auto_creazione_dati_matrice.o: codice/auto_creazione_dati_matrice.c lib/auto_creazione_dati_matrice.h | objfiles
+	gcc $(OFLAG) $@ $<
 
-$(EXE_ESERCIZIO3): $(DEPENDENCY3) $(DEPENDENCY2)  $(DEPENDENCY1); $(CC) $(CFLAGS) $(DEPENDENCY3) -o $(EXE_ESERCIZIO3)
-    
+$(O_DIR)/gauss_moves.o: codice/gauss_moves.c lib/gauss_moves.h | objfiles
+	gcc $(OFLAG) $@ $<
 
-#clean: $(EXE_ESERCIZIO3) $(EXE_ESERCIZIO2)                                                                                                                                                                                                                                 mv -d  $(BIN_DIR)/file_matrice trash/ mv -d  $(BIN_DIR)/file_vettore trash/ mv -d  $(BIN_DIR)/main.out trash/ mv -d  $(BIN_DIR)/esercizio2_autorun.out trash/ mv -d  $(BIN_DIR)/esercizio1_autorun.out trash/#
+$(O_DIR)/init_mv.o: codice/init_mv.c lib/init_mv.h | objfiles
+	gcc $(OFLAG) $@ $<
+
+$(O_DIR)/perturbatore_vettore.o: codice/perturbatore_vettore.c lib/perturbatore_vettore.h | objfiles
+	gcc $(OFLAG) $@ $<
+
+$(O_DIR)/output_type.o: codice/output_type.c lib/output_type.h | objfiles
+	gcc $(OFLAG) $@ $<
+
+$(O_DIR)/fill_mv.o: codice/fill_mv.c lib/fill_mv.h | objfiles
+	gcc $(OFLAG) $@ $<
+
+# creating directories
+$(O_DIR):
+	mkdir -p $@
+
+$(BIN_DIR):
+	mkdir -p $@
+                                                                                                                                                                                                                               mv -d  $(BIN_DIR)/file_matrice trash/ mv -d  $(BIN_DIR)/file_vettore trash/ mv -d  $(BIN_DIR)/main.out trash/ mv -d  $(BIN_DIR)/esercizio2_autorun.out trash/ mv -d  $(BIN_DIR)/esercizio1_autorun.out trash/#

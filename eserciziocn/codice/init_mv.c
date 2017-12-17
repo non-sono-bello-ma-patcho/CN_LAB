@@ -1,4 +1,4 @@
-#include"../lib/init_mv.h"
+#include"init_mv.h"
 
 
 float** init_matrix(unsigned int* dimensione_x,unsigned int* dimensione_y,const int dimensione_nota)

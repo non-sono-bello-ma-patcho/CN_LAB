@@ -33,9 +33,9 @@ while(scelta!=0)
         if((size=strlen(current_directory)+strlen("/esercizio2_autorun.out\0"))>=250)
         {
             current_directory=(char*)realloc(current_directory,size+1);
-            if(!current_directory){perror("ERRORE:unable to reallocate enough memory ");}
+            if(!current_directory){perror("Unable to reallocate enough memory");}
         }
-        if(!current_directory){perror("ERRORE:unable to get current directory name");}
+        if(!current_directory){perror("Unable to get current directory name");}
         #ifdef _DEBUG
         printf("Directory:%s;\n",current_directory);
         #endif
@@ -95,7 +95,7 @@ while(scelta!=0)
     }
     else{waitpid(pid,&status,0);}
 }
-return 0;
+    return 0;
 }
 
 
