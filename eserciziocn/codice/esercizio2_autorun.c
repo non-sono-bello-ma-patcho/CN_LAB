@@ -1,11 +1,11 @@
 #include<stdlib.h>
 #include<stdio.h>
-#include"../lib/init_mv.h"
-#include"../lib/fill_mv.h"
-#include"../lib/gauss_moves.h"
-#include"../lib/perturbatore_vettore.h"
-#include"../lib/output_type.h"
-#include"../lib/auto_creazione_dati_matrice.h"
+#include"init_mv.h"
+#include"fill_mv.h"
+#include"gauss_moves.h"
+#include"perturbatore_vettore.h"
+#include"output_type.h"
+#include"auto_creazione_dati_matrice.h"
 #define SISTEMA_IMPOSSIBILE 0
 #define SISTEMA_FINITE_SOL 1
 #define SISTEMA_INFINITE_SOL 2

@@ -1,4 +1,4 @@
-#include"../lib/perturbatore_vettore.h"
+#include"perturbatore_vettore.h"
 
 float norma_infinita(float * const vettore,const unsigned int * const l);
 

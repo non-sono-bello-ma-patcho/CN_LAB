@@ -1,9 +1,9 @@
-#include"../lib/gauss_moves.h"
+#include"gauss_moves.h"
 
 
 float trova_parametro(const float* valore1,const float* valorebase)
 {
-return (-(*valore1/(*valorebase)));
+	return (-(*valore1/(*valorebase)));
 }
 
 /*torna 0 se operazione a buon fine ,   -1 in caso di errore*/
@@ -18,7 +18,7 @@ int scambia_righe(float** matrix,const unsigned int* riga1,const unsigned int* r
 		matrix[i][*riga1]=matrix[i][*riga2];/*sostituisco cella prima riga*/
 		matrix[i][*riga2]=array[i];
 	}
-return 0;
+	return 0;
 }
 
 
@@ -32,10 +32,8 @@ int somma_riga_con_multiplo_rigabase(float** matrix,const unsigned int* riga1,co
 	{
 	    
 		matrix[i][*riga1]+=matrix[i][*rigabase]*(*parametro);
-		/*if(matrix[i][*riga1]!=0)
-		{perror("result not equal to 0\n");return -1;}*/
 	}
-return 0;
+	return 0;
 }
 
 
@@ -55,5 +53,5 @@ void stampa_risultato(float** matrix,const unsigned int* l_y,const unsigned int*
 		printf("\n");
 	}
 	printf("\n----------------------------------------------------------------------------\n");
-return;
+	return;
 }

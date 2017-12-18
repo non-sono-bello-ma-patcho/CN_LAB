@@ -1,4 +1,4 @@
-#include"../lib/fill_mv.h"
+#include"fill_mv.h"
 
 int fill_vector(float* vettore,const unsigned int* lunghezza,const int dimensione_nota)
 {
