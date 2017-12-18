@@ -1,35 +1,91 @@
 CC = gcc
 CC1 = g++
-CFLAGS = -Wall 
+CFLAGS = -Wall -o
+OFLAG = -Ilib -c ${CFLAGS}
+
 
 TRASH_DIR = trash
 BIN_DIR = bin
+O_DIR = objfiles
 CODICE_DIR = codice
 LIB_DIR = lib
+SL = $(O_DIR)/libcn.a
+LDFLAGS = -L$(O_DIR) -lcn -lrt
+E2OBJS = $(O_DIR)/auto_creazione_dati_matrice.o $(O_DIR)/gauss_moves.o $(O_DIR)/init_mv.o $(O_DIR)/perturbatore_vettore.o $(O_DIR)/fill_mv.o
 
-ESERCIZIO1A = $(BIN_DIR)/esercizio1a.out
-ESERCIZIO1B = $(BIN_DIR)/esercizio1b.out
-ESERCIZIO1C = $(BIN_DIR)/esercizio1c.out
+all: EXEC_1 EXEC_2 EXEC_3 | $(BIN_DIR)
 
-EXE_ESERCIZIO1 = $(ESERCIZIO1A) $(ESERCIZIO1B) $(ESERCIZIO1C)
-EXE_ESERCIZIO2 = $(BIN_DIR)/esercizio2_autorun.out
-EXE_ESERCIZIO3 = $(BIN_DIR)/main.out
-EXEC = $(EXE_ESERCIZIO2) $(EXE_ESERCIZIO1) $(EXE_ESERCIZIO3)
+#creating static library:
+$(SL): $(E2OBJS) | $(O_DIR) # $(O_DIR)/output_type.o
+	ar rcs $@ $(O_DIR)/*.o
 
-DEPENDENCY1 = $(CODICE_DIR)/es1a.cpp $(CODICE_DIR)/es1b.cpp $(CODICE_DIR)/es1c.cpp
+# creating object files:
+$(O_DIR)/auto_creazione_dati_matrice.o: codice/auto_creazione_dati_matrice.c lib/auto_creazione_dati_matrice.h | objfiles
+	gcc $(OFLAG) $@ $<
 
-DEPENDENCY2 = $(CODICE_DIR)/esercizio2_autorun.c $(CODICE_DIR)/auto_creazione_dati_matrice.c $(CODICE_DIR)/debug_functions.c $(CODICE_DIR)/fill_mv.c $(CODICE_DIR)/gauss_moves.c $(CODICE_DIR)/init_mv.c $(CODICE_DIR)/perturbatore_vettore.c $(LIB_DIR)/auto_creazione_dati_matrice.h $(LIB_DIR)/fill_mv.h $(LIB_DIR)/gauss_moves.h $(LIB_DIR)/init_mv.h $(LIB_DIR)/output_type.h $(LIB_DIR)/perturbatore_vettore.h
+$(O_DIR)/gauss_moves.o: codice/gauss_moves.c lib/gauss_moves.h | objfiles
+	gcc $(OFLAG) $@ $<
 
-DEPENDENCY3 = $(CODICE_DIR)/main.c 
+$(O_DIR)/init_mv.o: codice/init_mv.c lib/init_mv.h | objfiles
+	gcc $(OFLAG) $@ $<
 
-all: $(EXEC)
+$(O_DIR)/perturbatore_vettore.o: codice/perturbatore_vettore.c lib/perturbatore_vettore.h | objfiles
+	gcc $(OFLAG) $@ $<
+
+$(O_DIR)/esercizio2_autorun.o: codice/esercizio2_autorun.c | objfiles
+	gcc $(OFLAG) $@ $<
+
+#$(O_DIR)/output_type.o: codice/output_type.c lib/output_type.h | objfiles
+#	gcc $(OFLAG) $@ $<
+
+$(O_DIR)/fill_mv.o: codice/fill_mv.c lib/fill_mv.h | objfiles
+	gcc $(OFLAG) $@ $<
+
+# creating directories
+$(O_DIR):
+	mkdir -p $@
+
+$(BIN_DIR):
+	mkdir -p $@
+
+#
+# ESERCIZIO 1
+#
+
+EXEC_1: $(BIN_DIR)/es1a.out $(BIN_DIR)/es1b.out $(BIN_DIR)/es1c.out | $(BIN_DIR) 
+
+# esercizio 1a:
+$(BIN_DIR)/es1a.out: codice/es1a.cpp | $(BIN_DIR)
+	g++ $(CFLAGS) $@ $<
+
+#esercizio 1b:
+$(BIN_DIR)/es1b.out: codice/es1b.cpp | $(BIN_DIR)
+	g++ $(CFLAGS) $@ $<
+
+# esercizio 1c;
+$(BIN_DIR)/es1c.out: codice/es1c.cpp | $(BIN_DIR)
+	g++ $(CFLAGS) $@ $<
+
+#
+# ESERCIZIO 2
+#
+
+EXEC_2: $(BIN_DIR)/es2.out | $(BIN_DIR)
+
+$(BIN_DIR)/es2.out: $(O_DIR)/esercizio2_autorun.o $(SL)  | $(BIN_DIR)
+	gcc $(LDFLAGS) -o $@
+
+#
+# ESERCIZIO 3
+#
+
+EXEC_3: $(BIN_DIR)/es3.out | $(BIN_DIR)
+
+$(BIN_DIR)/es3.out: codice/main.c | $(BIN_DIR)
+	gcc $(CFLAGS) $@ $<
 
 
-$(EXE_ESERCIZIO1): $(DEPENDENCY1) $(DEPENDENCY2) $(DEPENDENCY3); $(CC1) $(CFLAG)  $(CODICE_DIR)/es1a.cpp -o $(ESERCIZIO1A) ; $(CC1) $(CODICE_DIR)/es1b.cpp -o $(ESERCIZIO1B) ; $(CC1) $(CODICE_DIR)/es1c.cpp -o $(ESERCIZIO1C) 
-                                                                                                                                                                                                                         
-$(EXE_ESERCIZIO2): $(DEPENDENCY2) $(DEPENDENCY1) $(DEPENDENCY3) ; $(CC) $(CFLAGS) $(DEPENDENCY2) -o $(EXE_ESERCIZIO2)                    
-
-$(EXE_ESERCIZIO3): $(DEPENDENCY3) $(DEPENDENCY2)  $(DEPENDENCY1); $(CC) $(CFLAGS) $(DEPENDENCY3) -o $(EXE_ESERCIZIO3)
-    
-
-#clean: $(EXE_ESERCIZIO3) $(EXE_ESERCIZIO2)                                                                                                                                                                                                                                 mv -d  $(BIN_DIR)/file_matrice trash/ mv -d  $(BIN_DIR)/file_vettore trash/ mv -d  $(BIN_DIR)/main.out trash/ mv -d  $(BIN_DIR)/esercizio2_autorun.out trash/ mv -d  $(BIN_DIR)/esercizio1_autorun.out trash/#
+#clean directory from unuseful files:
+clean:
+	rm -rf $(O_DIR)
+	rm -rf $(BIN_DIR)

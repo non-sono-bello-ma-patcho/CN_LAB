@@ -47,4 +47,4 @@ echo "                                                                          
 echo "                                                                                                                                    ";
 echo "                                                                                                                                    ";
 
-${BINDIR}/main.out
+${BINDIR}/es3.out

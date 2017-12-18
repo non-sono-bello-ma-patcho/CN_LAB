@@ -1,4 +1,4 @@
-#include"../lib/output_type.h"
+#include"output_type.h"
 
 /*testing funzioni gauss_moves*/
 void debug(float** matrix,const unsigned int*  altezza,const unsigned int* larghezza)

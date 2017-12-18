@@ -1,4 +1,4 @@
-#include"../lib/auto_creazione_dati_matrice.h"
+#include"auto_creazione_dati_matrice.h"
 
 const char* FILE_NAME_MATRIX="file_matrice";
 const char* FILE_NAME_VECTOR="file_vettore"; 
