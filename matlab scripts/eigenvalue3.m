@@ -7,12 +7,16 @@ firsteig = compute_eigenv(v1, A);
 seceigen = compute_eigenv(v2, A);
 
 function lam = compute_eigenv(v, A)
-    for i=0:intmax-1
+    prevlam = 0;
+    while true 
         % Computing egeinvector
         w=A*v;
         % Computing egeinvalue:
         lam = (v'*w)/(v'*v);
         % updating v:
         v = w/norm(w);
+        if(lam-prevlam<eps) break;
+        end
+        prevlam = lam;
     end
 end
