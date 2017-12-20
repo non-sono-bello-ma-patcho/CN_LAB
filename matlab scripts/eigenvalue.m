@@ -6,24 +6,21 @@ n = 10 * (d1+1) + d0;
 
 % Create Jordan block:
 A=diag(ones(1, n-1), 1) + eye(n);
-compare(A, n);
+B = createPertubate(A, n);
+% Computing A eigenvalues:
+Aeig = eig(A);
 
+% Computing B eigenvalues:
+Beig = eig(B);
 
-function m = compare(A, n)
+% Computing norm:
+norm1 = norm(A-B)/norm(A);
+norm2 = norm(Beig-Aeig)/norm(Aeig);
+
+function B = createPertubate(A, n)
     % Create pertubation:
     E = zeros(size(A));
     E(1, n) = 10^-n;
-
     %Creating pertubated Matrix:
     B = A+E;
-
-    % Computing A eigenvalues:
-    Aeig = eig(A);
-
-    % Computing B eigenvalues:
-    Beig = eig(B);
-
-    % Computing norm:
-    norm1 = norm(A-B)/norm(A);
-    norm2 = norm(Beig-Aeig)/norm(Aeig);
 end
