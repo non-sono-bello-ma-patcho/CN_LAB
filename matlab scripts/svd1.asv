@@ -1,0 +1,11 @@
+d0 = 0;
+d1 = 4;
+m = 10*(d0+1)+d1;
+
+A = zeros(m,3);
+
+M = function init (m)
+    for i=0:n
+    
+    end
+end
