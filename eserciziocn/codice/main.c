@@ -46,43 +46,43 @@ while(scelta!=0)
                 pid2=fork();
                 if(pid2==0)/*esercizio1 a*/
                 {
-                    strcat(current_directory,"/bin/esercizio1a.out\0");
+                    strcat(current_directory,"/bin/es1a.out\0");
                     printf("\nEseguo esercizio1a:\n");
-                    exit_state=execl(current_directory,"esercizio1a.out",(char*)NULL);
+                    exit_state=execl(current_directory,"es1a.out",(char*)NULL);
                     custom_fail(&exit_state);return 0;
                 }
                 else{waitpid(pid2,&status2,0);}
                 pid2=fork();
                 if(pid2==0)/*esercizio1 b*/
                 {
-                    strcat(current_directory,"/bin/esercizio1b.out\0");
+                    strcat(current_directory,"/bin/es1b.out\0");
                     printf("\nEseguo esercizio1b:\n");
-                    exit_state=execl(current_directory,"esercizio1b.out",(char*)NULL);
+                    exit_state=execl(current_directory,"es1b.out",(char*)NULL);
                     custom_fail(&exit_state);return 0;
                 }
                 else{waitpid(pid2,&status2,0);}
                 pid2=fork();
                 if(pid2==0)/*esercizio1 c*/
                 {
-                    strcat(current_directory,"/bin/esercizio1c.out\0");
+                    strcat(current_directory,"/bin/es1c.out\0");
                     printf("\nEseguo esercizio1c:\n");
-                    exit_state=execl(current_directory,"esercizio1c.out",(char*)NULL);
+                    exit_state=execl(current_directory,"es1c.out",(char*)NULL);
                     custom_fail(&exit_state);return 0;
                 }
                 else{waitpid(pid2,&status2,0);}
                 return 0;/*kill first child(pid)*/
                 break;
             case 2:
-                strcat(current_directory,"/bin/esercizio2_autorun.out\0");
-                exit_state=execl(current_directory,"esercizio2_autorun.out",(char*)NULL);
+                strcat(current_directory,"/bin/es2.out\0");
+                exit_state=execl(current_directory,"es2.out",(char*)NULL);
                 break;
             case 3:
-                strcat(current_directory,"/bin/esercizio2_autorun.out\0");
-                exit_state=execl(current_directory,"esercizio2_autorun.out",matricola,(char*)NULL);
+                strcat(current_directory,"/bin/es2.out\0");
+                exit_state=execl(current_directory,"es2.out",matricola,(char*)NULL);
                 break;
             case 4:
-                strcat(current_directory,"/bin/esercizio2_autorun.out\0");
-                exit_state=execl(current_directory,"esercizio2_autorun.out",(char*)NULL);
+                strcat(current_directory,"/bin/es2.out\0");
+                exit_state=execl(current_directory,"es2.out",(char*)NULL);
                 break; 
             default:
             printf("Comando non valido!!\n\n");
@@ -102,6 +102,6 @@ while(scelta!=0)
 
 void custom_fail(int *exit_state)
 {
-    if(exit_state<0){perror("ERRORE:unable to execute esercizio2_autorun.out ");}
+    if(exit_state<0){perror("ERRORE:unable to execute es2.out ");}
     return;
 }
