@@ -11,7 +11,7 @@ CODICE_DIR = codice
 LIB_DIR = lib
 SL = $(O_DIR)/libcn.a
 LDFLAGS = -L$(O_DIR) -lcn -lrt
-E2OBJS = $(O_DIR)/auto_creazione_dati_matrice.o $(O_DIR)/gauss_moves.o $(O_DIR)/init_mv.o $(O_DIR)/perturbatore_vettore.o $(O_DIR)/fill_mv.o
+E2OBJS = $(O_DIR)/auto_creazione_dati_matrice.o $(O_DIR)/gauss_moves.o $(O_DIR)/init_mv.o $(O_DIR)/perturbatore_vettore.o $(O_DIR)/fill_mv.o 
 
 all: EXEC_1 EXEC_2 EXEC_3 | $(BIN_DIR)
 

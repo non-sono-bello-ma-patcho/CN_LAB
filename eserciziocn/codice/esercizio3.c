@@ -25,13 +25,13 @@ while(scelta!=0)
         current_directory=(char*)malloc(sizeof(char)*250);
         if(!current_directory){perror("ERRORE:unable to allocate enough memory ");}
         current_directory=getcwd(current_directory,250);
-        if((size=strlen(current_directory)+strlen("/esercizio2_autorun.out\0"))>=250)
+        if((size=strlen(current_directory)+strlen("/bin/es2.out\0"))>=250)
         {
             current_directory=(char*)realloc(current_directory,size+1);
             if(!current_directory){perror("ERRORE:unable to reallocate enough memory ");}
         }
         if(!current_directory){perror("ERRORE:unable to get current directory name");}
-        strcat(current_directory,"/esercizio2_autorun.out\0");
+        strcat(current_directory,"/bin/es2.out\0");
         #ifdef _DEBUG
         printf("Directory:%s;\n",current_directory);
         #endif
@@ -39,16 +39,16 @@ while(scelta!=0)
         {   
             case 0:break;
             case 1:
-                exit_state=execl(current_directory,"esercizio2_autorun.out",(char*)NULL);
+                exit_state=execl(current_directory,"bin/es2.out",(char*)NULL);
                 break;
             case 2:
-                exit_state=execl(current_directory,"esercizio2_autorun.out",(char*)NULL);
+                exit_state=execl(current_directory,"bin/es2.out",(char*)NULL);
                 break;
             case 3:
-                exit_state=execl(current_directory,"esercizio2_autorun.out",matricola,(char*)NULL);
+                exit_state=execl(current_directory,"bin/es2.out",matricola,(char*)NULL);
                 break;
             case 4:
-                exit_state=execl(current_directory,"esercizio2_autorun.out",(char*)NULL);
+                exit_state=execl(current_directory,"bin/es2.out",(char*)NULL);
                 break; 
             default:
             printf("Comando non valido!!\n\n");

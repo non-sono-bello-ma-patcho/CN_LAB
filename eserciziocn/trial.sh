@@ -35,9 +35,10 @@ function display_ex1c(){
 }
 
 function display_ex2(){
+	echo "Il programma seguente non prevede l'interfaccia corrente, ci scusiamo per il disagio" > ${OUTPUT}
+	display_output 6 100 "Attenzione" ${OUTPUT}
 	clear
-	./bin/es2.out > ${OUTPUT}
-	display_output 50 50 "Esercizio 2"
+	./bin/es2.out
 }
 
 while true
