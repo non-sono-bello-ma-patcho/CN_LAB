@@ -26,6 +26,8 @@ Beig = eig(B);
 
 % eigenvalue comparison:
 Ceig = zeros(size(Beig));
+
+% compute comparison:
 for i=1:n
     Ceig(i) = (Beig(i)-Aeig(i));
 end
