@@ -4,12 +4,11 @@ INPUT=/tmp/menu.sh.$$
 
 # Storage file for displaying cal and date command output
 OUTPUT=/tmp/output.sh.$$
-
-# get text editor or fall back to vi_editor
-vi_editor=${EDITOR-vi}
-
+INPUT_PROMPT=/tmp/input_prompt.sh.$$
+IH=15
+TEMP=/tmp/temp_input.sh.$$
 # trap and delete temp files
-trap "rm $OUTPUT; rm $INPUT; exit" SIGHUP SIGINT SI
+trap "rm $TEMP ; rm $OUTPUT; rm $INPUT; exit" SIGHUP SIGINT SI
 
 # 
 function display_output(){
@@ -17,6 +16,27 @@ function display_output(){
 	local w=${2-41} 		# box width default 41
 	local t=${3-Output} 	# box title 
 	dialog --backtitle "non sono bello ma patcho - Laboratorio di Calcolo Numerico" --title "${t}" --clear --msgbox "$(<$OUTPUT)" ${h} ${w}
+}
+
+# fill matrix/vector with values chosen by user
+# first variable is file name;
+# dialog box is design to keep track of previous input, so that at the end, the user can see the entire matrix/vector;
+function fill_input(){
+	local box_title=$1
+	local filename=$2
+	while true;	do
+		dialog --title "$box_title" --backtitle "non sono bello ma patcho - Laboratorio di Calcolo Numerico" --inputbox "$(<$INPUT_PROMPT)" $IH 50 2> $TEMP
+		if [ -z "$(<$TEMP)" ]
+		then
+			break
+		else
+			echo "" >> $TEMP
+			cat $TEMP >> $INPUT_PROMPT
+			IH=$(($IH+1))
+		fi
+	done
+	cat $INPUT_PROMPT > $filename
+	IH=15
 }
 
 function display_ex1a(){
@@ -67,7 +87,7 @@ case $menuitem in
 	ex1b) display_ex1b;;
 	ex1c) display_ex1c;;
 	ex2) display_ex2;;
-	ex3) pluma;;
+	ex3) fill_input matrice.txt;;
 	Exit) echo "grazie per aver scelto non sono bello ma patcho" > ${OUTPUT} ; display_output 5 51 "bye"; break;;
 esac
 
@@ -76,3 +96,4 @@ clear
 # if temp files found, delete em
 [ -f ${OUTPUT} ] && rm ${OUTPUT}
 [ -f ${INPUT} ] && rm ${INPUT}
+[ -f ${INPUT_PROMPT} ] && rm ${INPUT_PROMPT}
