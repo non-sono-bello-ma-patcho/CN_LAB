@@ -32,7 +32,7 @@ $(O_DIR)/init_mv.o: codice/init_mv.c lib/init_mv.h | objfiles
 $(O_DIR)/perturbatore_vettore.o: codice/perturbatore_vettore.c lib/perturbatore_vettore.h | objfiles
 	gcc $(OFLAG) $@ $<
 
-$(O_DIR)/esercizio2_autorun.o: codice/esercizio2_autorun.c | objfiles
+$(O_DIR)/esercizio2_3_autorun.o: codice/esercizio2_3_autorun.c | objfiles
 	gcc $(OFLAG) $@ $<
 
 #$(O_DIR)/output_type.o: codice/output_type.c lib/output_type.h | objfiles
@@ -70,18 +70,18 @@ $(BIN_DIR)/es1c.out: codice/es1c.cpp | $(BIN_DIR)
 # ESERCIZIO 2
 #
 
-EXEC_2: $(BIN_DIR)/es2.out | $(BIN_DIR)
+EXEC_2: $(BIN_DIR)/esautorun.out | $(BIN_DIR)
 
-$(BIN_DIR)/es2.out: $(O_DIR)/esercizio2_autorun.o $(SL)  | $(BIN_DIR)
+$(BIN_DIR)/esautorun.out: $(O_DIR)/esercizio2_3_autorun.o $(SL)  | $(BIN_DIR)
 	gcc $(LDFLAGS) -o $@
 
 #
 # ESERCIZIO 3
 #
 
-EXEC_3: $(BIN_DIR)/es3.out | $(BIN_DIR)
+EXEC_3: $(BIN_DIR)/launcher.out | $(BIN_DIR)
 
-$(BIN_DIR)/es3.out: codice/main.c | $(BIN_DIR)
+$(BIN_DIR)/launcher.out: codice/main.c | $(BIN_DIR)
 	gcc $(CFLAGS) $@ $<
 
 

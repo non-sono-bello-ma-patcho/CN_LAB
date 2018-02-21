@@ -35,8 +35,17 @@ function fill_input(){
 			IH=$(($IH+1))
 		fi
 	done
+	# pass informations to file
 	cat $INPUT_PROMPT > $filename
+	# re init INPUT_PROMPT
+	echo "" > $INPUT_PROMPT
+	# re init box size
 	IH=15
+}
+
+function fill_matrix_n_vector(){
+	fill_input "inserisci le righe della matrice" /tmp/matrice.txt.$$
+	fill_input "inserisci le componenti del vettore" /tmp/vettore.txt.$$
 }
 
 function display_ex1a(){
@@ -87,7 +96,7 @@ case $menuitem in
 	ex1b) display_ex1b;;
 	ex1c) display_ex1c;;
 	ex2) display_ex2;;
-	ex3) fill_input matrice.txt;;
+	ex3) fill_matrix_n_vector;;
 	Exit) echo "grazie per aver scelto non sono bello ma patcho" > ${OUTPUT} ; display_output 5 51 "bye"; break;;
 esac
 
@@ -97,3 +106,4 @@ clear
 [ -f ${OUTPUT} ] && rm ${OUTPUT}
 [ -f ${INPUT} ] && rm ${INPUT}
 [ -f ${INPUT_PROMPT} ] && rm ${INPUT_PROMPT}
+[ -f ${TEMP} ] && rm ${TEMP}
