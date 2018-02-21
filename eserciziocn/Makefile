@@ -52,19 +52,12 @@ $(BIN_DIR):
 # ESERCIZIO 1
 #
 
-EXEC_1: $(BIN_DIR)/es1a.out $(BIN_DIR)/es1b.out $(BIN_DIR)/es1c.out | $(BIN_DIR) 
+EXEC_1: $(BIN_DIR)/es1.out | $(BIN_DIR) 
 
 # esercizio 1a:
-$(BIN_DIR)/es1a.out: codice/es1a.cpp | $(BIN_DIR)
-	g++ $(CFLAGS) $@ $<
+$(BIN_DIR)/es1.out: codice/es1.c | $(BIN_DIR)
+	gcc $(CFLAGS) $@ $<
 
-#esercizio 1b:
-$(BIN_DIR)/es1b.out: codice/es1b.cpp | $(BIN_DIR)
-	g++ $(CFLAGS) $@ $<
-
-# esercizio 1c;
-$(BIN_DIR)/es1c.out: codice/es1c.cpp | $(BIN_DIR)
-	g++ $(CFLAGS) $@ $<
 
 #
 # ESERCIZIO 2
