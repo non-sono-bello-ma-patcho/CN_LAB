@@ -1,7 +1,13 @@
+% Developed by: Non sono bello ma patcho
+% https://github.com/non-sono-bello-ma-patcho 
+% Developers:   Andrea Storace (4186140)
+%               Andrea Straforini ()
+%               Elisa Zazzera ()
 
+% Given data:
 A = [1 -1 2;-2 0 5;6 -3 6];
 v1 = [1 1 1]';
-v2 = [3 10 40]';
+v2 = [3 10 4]';
 
 % calcolo di autovalori e velocità di convergenza con metodo delle potenze
 [cs1, eig1] = mp(v1, A);

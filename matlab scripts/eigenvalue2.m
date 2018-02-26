@@ -23,12 +23,10 @@ end
 % Create Diagonal Matrix:
 D =  diag(sum(Ag));
 
-Di = inv(D);
-
 % Computing Diagonal inverse:
 AgDi = Ag/D;
 
-% Computing eigenvalue:
+% Computing eigenvalues:
 ADeig = eig(AgDi);
 
 % Place 1 in adjency matrix:
