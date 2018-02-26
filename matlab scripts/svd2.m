@@ -1,19 +1,33 @@
-prompt = 'I need a dimension darling: ';
+% Developed by: Non sono bello ma patcho
+% https://github.com/non-sono-bello-ma-patcho 
+% Developers:   Andrea Storace (4186140)
+%               Andrea Straforini ()
+%               Elisa Zazzera ()
+
+prompt = 'Enter the size of the array: ';
 n = input(prompt);
 
-% init A matrix:
+% init matrix:
 A = init(n);
 
 % computing singular values:
 sv = svd(A);
 
 % computing conditioning in euclidean norm:
+condiz=cond(A);
 
 % basically the major singular value keep on increasing instead of minor's
 % one, that keep on decrease till zero, awesome, why?
 
 % pertubating matrix:
-A = perturbate(A, n);
+Ap = perturbate(A, n);
+
+% Compute eigenvalues of pertubated array
+eigA = eig(A);
+%studio perturbazione
+svp=svd(Ap);
+r=rank(A);
+rp=rank(Ap);
 
 function M = init(m)
     M = zeros(m);
@@ -29,7 +43,5 @@ function M = init(m)
 end
 
 function M = perturbate(M, n)
-    for i=1:n
-        M(i,1)=M(i,1)-2^(2-i);
-    end
+        M(n,1)=M(n,1)-2^(2-n);
 end

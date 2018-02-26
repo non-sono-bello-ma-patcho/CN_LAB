@@ -1,10 +1,15 @@
+% Developed by: Non sono bello ma patcho
+% https://github.com/non-sono-bello-ma-patcho 
+% Developers:   Andrea Storace (4186140)
+%               Andrea Straforini ()
+%               Elisa Zazzera ()
+
 d0 = 0;
 d1 = 4;
 m = 10*(d0+1)+d1;
+
 % init matrix
 A = init(m);
-% compute transposed matrix
-At = A';
 
 %Computing singular values decompsition;
 %sxValues svd dxValues:
@@ -15,8 +20,8 @@ ImAt = orth(A');
 KerA = null(A);
 KerAt = null(A');
 % Computing egeinvalue:
-eigAAt = eig(A*At); % A*At has dim: 14x3 3x14 -> 14x14
-eigAtA = eig(At*A); % -> 3x3
+eigAAt = eig(A*A'); % -> 14x14
+eigAtA = eig(A'*A); % -> 3x3
 
 % AAt and AtA has the same eigenvlaue, so that means they have the same
 % characteristic polynomial(?). Also, this means AAt and AtA are
