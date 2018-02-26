@@ -19,12 +19,12 @@ condiz=cond(A);
 % basically the major singular value keep on increasing instead of minor's
 % one, that keep on decrease till zero, awesome, why?
 
-% pertubating matrix:
+% pertubating array:
 Ap = perturbate(A, n);
 
 % Compute eigenvalues of pertubated array
 eigA = eig(A);
-%studio perturbazione
+
 svp=svd(Ap);
 r=rank(A);
 rp=rank(Ap);
