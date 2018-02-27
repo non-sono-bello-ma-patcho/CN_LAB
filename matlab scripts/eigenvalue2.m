@@ -1,9 +1,8 @@
 % Developed by: Non sono bello ma patcho
 % https://github.com/non-sono-bello-ma-patcho 
 % Developers:   Andrea Storace (4186140)
-%               Andrea Straforini ()
-%               Elisa Zazzera ()
-
+%               Andrea Straforini (4338710)
+%               Elisa Zazzera (4380663)
 n=11;
 
 % init adjency matrix
@@ -28,6 +27,8 @@ AgDi = Ag/D;
 
 % Computing eigenvalues:
 ADeig = eig(AgDi);
+
+writetable(table(ADeig),'eigenvalue_results.xlsx','Sheet',2,'Range','A1');
 
 % Place 1 in adjency matrix:
 function [A] = place_simmetrically(A,x,y)

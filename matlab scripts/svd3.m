@@ -1,9 +1,8 @@
 % Developed by: Non sono bello ma patcho
 % https://github.com/non-sono-bello-ma-patcho 
 % Developers:   Andrea Storace (4186140)
-%               Andrea Straforini ()
-%               Elisa Zazzera ()
-
+%               Andrea Straforini (4338710)
+%               Elisa Zazzera (4380663)
 % determinare la soluzione ai minimi quadrati per y uguale alla matrice
 % dell'esercizio 1
 d0 = 0;

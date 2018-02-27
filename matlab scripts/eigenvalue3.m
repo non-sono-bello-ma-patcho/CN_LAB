@@ -1,9 +1,8 @@
 % Developed by: Non sono bello ma patcho
 % https://github.com/non-sono-bello-ma-patcho 
 % Developers:   Andrea Storace (4186140)
-%               Andrea Straforini ()
-%               Elisa Zazzera ()
-
+%               Andrea Straforini (4338710)
+%               Elisa Zazzera (4380663)
 % Given data:
 A = [1 -1 2;-2 0 5;6 -3 6];
 v1 = [1 1 1]';
@@ -18,6 +17,13 @@ v2 = [3 10 4]';
 [ics1, ieig1] = inv_mp(v1, A);
 [ics2, ieig2] = inv_mp(v2, A);
 
+T1 = table(eig1, ieig1);
+T2 = table(eig2, ieig2);
+T3 = table(cs1, ics1, cs2, ics2);
+
+writetable(T1,'eigenvalue_results.xlsx','Sheet',3,'Range','A1');
+writetable(T2,'eigenvalue_results.xlsx','Sheet',3,'Range','C1');
+writetable(T3,'eigenvalue_results.xlsx','Sheet',3,'Range','E1');
 % Funzione che implementa il metodo delle potenze
 function [conv_speed, lam] = mp(v, A)
     prevlam = 0;

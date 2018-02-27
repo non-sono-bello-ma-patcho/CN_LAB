@@ -1,9 +1,8 @@
 % Developed by: Non sono bello ma patcho
 % https://github.com/non-sono-bello-ma-patcho 
 % Developers:   Andrea Storace (4186140)
-%               Andrea Straforini ()
-%               Elisa Zazzera ()
-
+%               Andrea Straforini (4338710)
+%               Elisa Zazzera (4380663)
 d0 = 0;
 d1 = 4;
 m = 10*(d0+1)+d1;
@@ -19,9 +18,12 @@ ImA = orth(A);
 ImAt = orth(A');
 KerA = null(A);
 KerAt = null(A');
+
 % Computing egeinvalue:
 eigAAt = eig(A*A'); % -> 14x14
 eigAtA = eig(A'*A); % -> 3x3
+
+T1=table();
 
 % AAt and AtA has the same eigenvlaue, so that means they have the same
 % characteristic polynomial(?). Also, this means AAt and AtA are
