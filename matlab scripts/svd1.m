@@ -18,30 +18,18 @@ ImA = orth(A);
 ImAt = orth(A');
 KerA = null(A);
 KerAt = null(A');
+eigA = svd(A);
+eigAt = svd(A');
 
 % Computing egeinvalue:
 eigAAt = eig(A*A'); % -> 14x14
 eigAtA = eig(A'*A); % -> 3x3
 
-T1=table();
-
-% AAt and AtA has the same eigenvlaue, so that means they have the same
-% characteristic polynomial(?). Also, this means AAt and AtA are
-% diagonalisable => AAt = AAt' and AtA = AtA'
-
-
-% comparison between ImA and Left Singular Values (U): same value for the
-% first 3 columns;
-% comparison between ImAt and Left Singluar Values (Ut): exact same value
-
-% comparison between KerA and V: KerA nucleo banale, V 3x3 matrix
-% comparison between KerAt and Vt: 
-
 function M = init (n)
     M = ones(n, 3);
     for i=1:n
         for j=1:3
-           M(i,j)=M(i,j)/(i^(j-1)); 
+           M(i,j)=(i^(j-1))/(n^(j-1)); 
         end
     end
 end

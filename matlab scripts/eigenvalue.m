@@ -3,8 +3,8 @@
 % Developers:   Andrea Storace (4186140)
 %               Andrea Straforini (4338710)
 %               Elisa Zazzera (4380663)
-d0 = 0; 
-d1 = 4;
+d0 = 3; 
+d1 = 6;
 
 % Compute size:
 n = 10 * (d1+1) + d0;
@@ -39,6 +39,7 @@ Ceig = zeros(size(Beig));
 for i=1:n
     Ceig(i) = (Beig(i)-Aeig(i));
 end
+
 % Computing norms:
 norm1 = norm(B-A)/norm(A);
 norm2 = norm(Beig-Aeig)/norm(Aeig);

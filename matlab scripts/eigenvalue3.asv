@@ -27,19 +27,19 @@ writetable(T1,'eigenvalue_results.xlsx','Sheet',3,'Range','A1');
 writetable(T2,'eigenvalue_results.xlsx','Sheet',3,'Range','C1');
 writetable(T3,'eigenvalue_results.xlsx','Sheet',3,'Range','E1');
 
-% This part just plot convergence speed:
+% This just plot convergence speed:
 %shiftspre = [4.2:0.1:4.8];
 %cspre = shiftspre;
 %i=1;
 %for s=shiftspre; [cspre(i), tmp] = inv_mp(s, v1, A); i=i+1; end
 
-%shiftspost = [5.6:0.5:20];
-%cspost = shiftspost;
-%i=1;
-%for s=shiftspost; [cspost(i), tmp] = inv_mp(s, v1, A); i=i+1; end
+shiftspost = [5.6:0.5:20];
+cspost = shiftspost;
+i=1;
+for s=shiftspost; [cspost(i), tmp] = inv_mp(s, v1, A); i=i+1; end
 
-%shifts = [shiftspre shiftspost];
-%csf = [cspre cspost];   
+shifts = [shiftspre shiftspost];
+csf = [cspre cspost];   
 
 % Funzione che implementa il metodo delle potenze
 function [conv_speed, lam] = mp(v, A)

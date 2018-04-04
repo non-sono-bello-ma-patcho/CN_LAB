@@ -28,7 +28,8 @@ AgDi = Ag/D;
 % Computing eigenvalues:
 ADeig = eig(AgDi);
 
-writetable(table(ADeig),'eigenvalue_results.xlsx','Sheet',2,'Range','A1');
+% write data on xlsx file:
+% writetable(table(ADeig),'eigenvalue_results.xlsx','Sheet',2,'Range','A1');
 
 % Place 1 in adjency matrix:
 function [A] = place_simmetrically(A,x,y)
